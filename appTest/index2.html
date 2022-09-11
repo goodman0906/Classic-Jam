@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="main.css">
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+     @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600&display=swap');
+
+*{
+   font-family: 'Nunito', sans-serif;
+   margin:0; padding:0;
+   box-sizing: border-box;
+   outline: none; border:none;
+   text-decoration: none;
+   transition: all .2s linear;
+   text-transform: capitalize;
+}
+
+html{
+   font-size: 62.5%;
+   overflow-x: hidden;
+}
+
+body{
+   background: #eee;
+}
+
+.container{
+   max-width: 1200px;
+   margin:0 auto;
+   padding:3rem 2rem;
+}
+
+.container .title{
+   font-size: 3.5rem;
+   color:#444;
+   margin-bottom: 3rem;
+   text-transform: uppercase;
+   text-align: center;
+}
+
+.container .items{
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+   gap:2rem;
+}
+
+.container .items .product{
+   text-align: center;
+   padding:3rem 2rem;
+   background: #fff;
+   box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+   outline: .1rem solid #ccc;
+   outline-offset: -1.5rem;
+   cursor: pointer;
+}
+
+.container .items .product:hover{
+   outline: .2rem solid #222;
+   outline-offset: 0;
+}
+
+.container .items .product img{
+   height: 25rem;
+}
+
+.container .items .product:hover img{
+   transform: scale(.9);
+}
+
+.container .items .product h3{
+   padding:.5rem 0;
+   font-size: 2rem;
+   color:#444;
+}
+
+.container .items .product:hover h3{
+   color:#27ae60;
+}
+
+.container .items .product .price{
+   font-size: 2rem;
+   color:#444;
+}
+
+    </style>
+        <link rel="stylesheet" href="main.css" />
+  </head>
+  <body>
+    
+    <header>
+        <img class="logo" src="./img/2dd8b5694af689a8d0e7.png" alt="" style="height:150px ;" />
+
+        <nav>
+            <ul class="nav_links">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./index2.html">Products</a></li>
+                <li><a href="">About</a></li>
+            </ul>
+        </nav>
+        <a class="cta" href="#"><button>Contact</button></a>
+    </header>
+    <div class="container">
+
+        <h3 class="title"> best products </h3>
+    <div class="items"></div>
+    </div>
+  </body>
+  <script>
+    var items = document.querySelector(".items");
+    fetch("https://631c75bf1b470e0e12025209.mockapi.io/product")
+      .then((response) => {
+        console.log("response", response);
+        // console.log(' response.json()',  response.json());
+        response.json().then((data) => {
+          console.log("data", data);
+          for (product of data) {
+            items.innerHTML += ` <div class="product">
+         <img src=${product.productPR} alt="">
+         <h3>${product.name}</h3>
+         <div class="price">${product.price}</div>
+      </div>
+        `;
+          }
+        });
+      })
+      .catch((err) => {
+        console.log("Error :-S", err);
+      });
+  </script>
+
+    <!-- Site footer -->
+    <footer class="site-footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12 col-md-6">
+              <h6>About</h6>
+              <p class="text-justify">Scanfcode.com <i>CODE WANTS TO BE SIMPLE </i> Providing musical instruments, teaching music, and event organization
+                .</p>
+            </div>
+  
+            <div class="col-xs-6 col-md-3">
+              <h6>Categories</h6>
+              <ul class="footer-links">
+                <li><a href="http://scanfcode.com/category/c-language/">C</a></li>
+                <li><a href="http://scanfcode.com/category/front-end-development/">UI Design</a></li>
+                <li><a href="http://scanfcode.com/category/back-end-development/">PHP</a></li>
+                <li><a href="http://scanfcode.com/category/java-programming-language/">Java</a></li>
+                <li><a href="http://scanfcode.com/category/android/">Android</a></li>
+                <li><a href="http://scanfcode.com/category/templates/">Templates</a></li>
+              </ul>
+            </div>
+  
+            <div class="col-xs-6 col-md-3">
+              <h6>Quick Links</h6>
+              <ul class="footer-links">
+                <li><a href="http://scanfcode.com/about/">About Us</a></li>
+                <li><a href="http://scanfcode.com/contact/">Contact Us</a></li>
+                <li><a href="http://scanfcode.com/contribute-at-scanfcode/">Contribute</a></li>
+                <li><a href="http://scanfcode.com/privacy-policy/">Privacy Policy</a></li>
+                <li><a href="http://scanfcode.com/sitemap/">Sitemap</a></li>
+              </ul>
+            </div>
+          </div>
+          <hr>
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8 col-sm-6 col-xs-12">
+              <p class="copyright-text">Copyright &copy; 2017 All Rights Reserved by 
+           <a href="#">Scanfcode</a>.
+              </p>
+            </div>
+  
+            <div class="col-md-4 col-sm-6 col-xs-12">
+              <ul class="social-icons">
+                <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                <li><a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a></li>
+                <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>   
+              </ul>
+            </div>
+          </div>
+        </div>
+  </footer>
+</html>
